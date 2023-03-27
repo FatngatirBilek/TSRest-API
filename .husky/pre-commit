@@ -1,33 +1,33 @@
 #!/bin/sh
-."$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/_/husky.sh"
 
-echo ' Styling, Testing, and Building your project before committing'
+echo ' Styling, testing and building your project before committing'
 
-# Check prettier 
+# Check Prettier
 npm run check-format ||
 (
-  echo 'Prettier Check Failed. Run npm run format, add changes and try commit again';
-  false;
+    echo 'Prettier Check Failed. Run npm run format, add changes and try commit again';
+    false;
 )
 
-# Check Eslint
+# Check ESLint
 npm run check-lint ||
 (
-  echo "Eslint Check Failed. Make the required change listed above, add change and try to commit again";
-  false;
+    echo "ESLint Check Failed. Make the required changes listed above, add changes and try to commit again";
+    false;
 )
 
 # Check tsconfig
-npm run check-types ||
+npm run check-types || 
 (
-  echo "Failed type check. Make the changes required above and try to commit again";
-  false;
+    echo "Failed type check. Make the changes require above, add changes and try to commit again";
+    false;
 )
 
-npm run build
+npm run build ||
 (
-  echo "Your build failed, view the errors above";
-  false;
+    echo "Your build failed, view the errors above"
+    false;
 )
 
-echo "Committing Success"
+echo "Success Commit"
