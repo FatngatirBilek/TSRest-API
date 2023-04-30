@@ -7,10 +7,10 @@ import cors from 'cors'
 const app: Application = express()
 const port: number = 4000
 
-//parse body req
+// parse body req
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-//cors access handler
+// cors access handler
 app.use(cors())
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
